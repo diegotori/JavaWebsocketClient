@@ -23,7 +23,6 @@ import javax.annotation.Nonnull;
 
 import rx.Observable;
 import rx.Observer;
-import rx.internal.operators.OperatorDoOnEach;
 
 public class LoggingObservables {
 

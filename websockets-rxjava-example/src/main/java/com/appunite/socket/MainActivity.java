@@ -33,12 +33,11 @@ import com.example.model.Message;
 import com.example.model.MessageType;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.jakewharton.rxbinding.view.RxView;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 
 import rx.android.schedulers.AndroidSchedulers;
-import rx.android.view.ViewActions;
-import rx.android.view.ViewObservable;
 import rx.functions.Action1;
 import rx.schedulers.Schedulers;
 import rx.subjects.BehaviorSubject;
@@ -102,16 +101,16 @@ public class MainActivity extends FragmentActivity {
 							}
 						}),
 				presenter.connectButtonEnabledObservable()
-					.subscribe(ViewActions.setEnabled(findViewById(R.id.main_activity_connect_button))),
+					.subscribe(RxView.enabled(findViewById(R.id.main_activity_connect_button))),
 				presenter.disconnectButtonEnabledObservable()
-						.subscribe(ViewActions.setEnabled(findViewById(R.id.macin_activity_disconnect_button))),
+						.subscribe(RxView.enabled(findViewById(R.id.macin_activity_disconnect_button))),
 				presenter.sendButtonEnabledObservable()
-						.subscribe(ViewActions.setEnabled(findViewById(R.id.main_activity_send_button))),
-				ViewObservable.clicks(findViewById(R.id.main_activity_connect_button))
+						.subscribe(RxView.enabled(findViewById(R.id.main_activity_send_button))),
+				RxView.clicks(findViewById(R.id.main_activity_connect_button))
 						.subscribe(presenter.connectClickObserver()),
-				ViewObservable.clicks(findViewById(R.id.macin_activity_disconnect_button))
+				RxView.clicks(findViewById(R.id.macin_activity_disconnect_button))
 						.subscribe(presenter.disconnectClickObserver()),
-				ViewObservable.clicks(findViewById(R.id.main_activity_send_button))
+				RxView.clicks(findViewById(R.id.main_activity_send_button))
 						.subscribe(presenter.sendClickObserver()));
 	}
 

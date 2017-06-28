@@ -10,12 +10,12 @@ import com.appunite.detector.ChangesDetector;
 import com.appunite.detector.SimpleDetector;
 import com.google.common.collect.ImmutableList;
 
+import com.jakewharton.rxbinding.view.RxView;
 import java.text.DateFormat;
 import java.util.Date;
 
 import javax.annotation.Nonnull;
 
-import rx.android.view.ViewObservable;
 import rx.functions.Action1;
 import rx.subscriptions.CompositeSubscription;
 
@@ -103,7 +103,7 @@ public class MainAdapter extends RecyclerView.Adapter<BaseViewHolder> implements
                 subscription.unsubscribe();
             }
             subscription = new CompositeSubscription(
-                    ViewObservable.clicks(text).subscribe(item.clickObserver())
+                    RxView.clicks(text).subscribe(item.clickObserver())
             );
         }
 

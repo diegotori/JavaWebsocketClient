@@ -1,0 +1,81 @@
+apply plugin: 'maven'
+apply plugin: 'signing'
+
+if (!project.hasProperty("ossrhUsername")) {
+  project.ext.setProperty("ossrhUsername", null)
+}
+if (!project.hasProperty("ossrhPassword")) {
+  project.ext.setProperty("ossrhPassword", null)
+}
+
+uploadArchives {
+  repositories {
+    mavenDeployer {
+      beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
+      pom.groupId = project.group
+      pom.artifactId = project.name
+      pom.version = project.version
+      repository(url: "https://oss.sonatype.org/service/local/staging/deploy/maven2/") {
+        authentication(
+            userName: project.ext.getProperty("ossrhUsername"),
+            password: project.ext.getProperty("ossrhPassword")
+        )
+      }
+
+      snapshotRepository(url: "https://oss.sonatype.org/content/repositories/snapshots/") {
+        authentication(
+            userName: project.ext.getProperty("ossrhUsername"),
+            password: project.ext.getProperty("ossrhPassword")
+        )
+      }
+
+      pom.project {
+        name 'RxJavaWebsocketClient'
+        packaging 'jar'
+        // optionally artifactId can be defined here
+        description 'RxJavaWebsocketClient is simple library for Websocket connection for java and Android. It is designed to be fast and fault tolerant.'
+        url 'https://github.com/jacek-marchwicki/JavaWebsocketClient'
+
+        scm {
+          connection 'scm:git:https://github.com/jacek-marchwicki/JavaWebsocketClient.git'
+          developerConnection 'scm:git:https://github.com/jacek-marchwicki/JavaWebsocketClient.git'
+          url 'https://github.com/jacek-marchwicki/JavaWebsocketClient.git'
+        }
+
+        licenses {
+          license {
+            name 'The Apache License, Version 2.0'
+            url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+          }
+        }
+
+        developers {
+          developer {
+            id 'jacek'
+            name 'Jacek Marchwicki'
+            email 'jacek.marchwicki@gmail.com'
+          }
+        }
+      }
+    }
+  }
+}
+
+task javadocJar(type: Jar) {
+  classifier = 'javadoc'
+  from javadoc
+}
+
+task sourcesJar(type: Jar) {
+  classifier = 'sources'
+  from sourceSets.main.allSource
+}
+
+artifacts {
+  archives javadocJar, sourcesJar
+}
+
+signing {
+  required { gradle.taskGraph.hasTask("uploadArchives") }
+  sign configurations.archives
+}

@@ -1,3 +1,32 @@
-task wrapper(type: Wrapper) {
-        gradleVersion = '2.1'
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:2.3.3'
+    }
+}
+
+apply from: "gradle_scripts/dependencies.gradle"
+
+allprojects {
+    def isLibraryProject = project(":websockets-rxjava-example") != it
+    if(isLibraryProject) {
+      group = "com.appunite"
+      version = "4.0.1"
+    }
+
+    repositories {
+        mavenCentral()
+        jcenter()
+        maven { url 'https://commondatastorage.googleapis.com/maven-repository/' }
+    }
+    tasks.withType(JavaCompile) {
+        sourceCompatibility = rootProject.javaSourceCompatibility
+        targetCompatibility = rootProject.javaSourceCompatibility
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
 }
