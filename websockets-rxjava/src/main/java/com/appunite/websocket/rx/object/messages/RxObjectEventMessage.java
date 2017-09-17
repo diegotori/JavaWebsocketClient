@@ -61,33 +61,4 @@ public class RxObjectEventMessage extends RxObjectEventConn {
                 "message='" + message + '\'' +
                 '}';
     }
-
-    /**
-     * Transform one observable to observable of given type filtering by a type
-     *
-     * @param clazz type of message that you would like get
-     * @param <T> type of message that you would like get
-     * @return Observable that returns given type of message
-     */
-    @Nonnull
-    public static <T> Observable.Transformer<RxObjectEventMessage, T> filterAndMap(@Nonnull final Class<T> clazz) {
-        return new Observable.Transformer<RxObjectEventMessage, T>() {
-            @Override
-            public Observable<T> call(Observable<RxObjectEventMessage> observable) {
-                return observable
-                        .filter(new Func1<RxObjectEventMessage, Boolean>() {
-                            @Override
-                            public Boolean call(RxObjectEventMessage o) {
-                                return o != null && clazz.isInstance(o.message());
-                            }
-                        })
-                        .map(new Func1<RxObjectEventMessage, T>() {
-                            @Override
-                            public T call(RxObjectEventMessage o) {
-                                return o.message();
-                            }
-                        });
-            }
-        };
-    }
 }

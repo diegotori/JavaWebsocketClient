@@ -20,6 +20,7 @@ import com.appunite.websocket.rx.object.ObjectSerializer;
 import com.appunite.websocket.rx.object.ObjectWebSocketSender;
 import com.appunite.websocket.rx.object.RxObjectWebSockets;
 
+import com.appunite.websocket.rx.object.messages.RxObjectEventMessage;
 import java.util.concurrent.Callable;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -27,7 +28,9 @@ import java.util.logging.Logger;
 import javax.annotation.Nonnull;
 
 import okhttp3.WebSocket;
+import rx.Observable;
 import rx.Single;
+import rx.functions.Func1;
 
 public class RxMoreObservables {
 
@@ -78,5 +81,32 @@ public class RxMoreObservables {
         });
     }
 
-
+    /**
+     * Transform one observable to observable of given type filtering by a type
+     *
+     * @param clazz type of message that you would like get
+     * @param <T> type of message that you would like get
+     * @return Observable that returns given type of message
+     */
+    @Nonnull
+    public static <T> Observable.Transformer<RxObjectEventMessage, T> filterAndMap(@Nonnull final Class<T> clazz) {
+        return new Observable.Transformer<RxObjectEventMessage, T>() {
+            @Override
+            public Observable<T> call(Observable<RxObjectEventMessage> observable) {
+                return observable
+                        .filter(new Func1<RxObjectEventMessage, Boolean>() {
+                            @Override
+                            public Boolean call(RxObjectEventMessage o) {
+                                return o != null && clazz.isInstance(o.message());
+                            }
+                        })
+                        .map(new Func1<RxObjectEventMessage, T>() {
+                            @Override
+                            public T call(RxObjectEventMessage o) {
+                                return o.message();
+                            }
+                        });
+            }
+        };
+    }
 }

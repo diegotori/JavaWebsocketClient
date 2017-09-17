@@ -206,7 +206,7 @@ public class Socket {
 
                         final Observable<DataMessage> waitForResponseObservable = events
                                 .compose(com.example.MoreObservables.filterAndMap(RxObjectEventMessage.class))
-                                .compose(RxObjectEventMessage.filterAndMap(DataMessage.class))
+                                .compose(RxMoreObservables.filterAndMap(DataMessage.class))
                                 .filter(new Func1<DataMessage, Boolean>() {
                                     @Override
                                     public Boolean call(DataMessage dataMessage) {
