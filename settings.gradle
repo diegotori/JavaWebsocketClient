@@ -1,3 +1,3 @@
-include ':websockets-rxjava2'
+include ':websockets-rxjava2', ':websockets-rxevent'
 include ":websockets-rxjava"
 include ":websockets-rxjava-example"

@@ -1,0 +1,11 @@
+apply plugin: 'java'
+apply from: "../gradle_scripts/maven_deploy.gradle"
+sourceCompatibility = rootProject.javaSourceCompatibility
+targetCompatibility = rootProject.javaTargetCompatibility
+
+dependencies {
+  compile rootProject.libraries.okhttp,
+      rootProject.libraries.findbugs_jsr305
+
+  testCompile rootProject.basic_test_dependencies
+}
