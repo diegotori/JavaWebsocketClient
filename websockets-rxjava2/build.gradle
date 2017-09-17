@@ -1,8 +1,11 @@
 apply plugin: 'java'
+apply from: "../gradle_scripts/maven_deploy.gradle"
+sourceCompatibility = rootProject.javaSourceCompatibility
+targetCompatibility = rootProject.javaTargetCompatibility
 
 dependencies {
-  compile fileTree(dir: 'libs', include: ['*.jar'])
-}
+  compile project(":websockets-rxevent")
+  compile rootProject.libraries.rxjava2
 
-sourceCompatibility = "1.7"
-targetCompatibility = "1.7"
+  testCompile rootProject.basic_test_dependencies
+}
