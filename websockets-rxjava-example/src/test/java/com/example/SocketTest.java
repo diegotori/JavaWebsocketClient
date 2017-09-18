@@ -16,6 +16,8 @@
 
 package com.example;
 
+import com.appunite.websocket.rxevent.object.ObjectParseException;
+import com.appunite.websocket.rxevent.object.ObjectWebSocketSender;
 import com.appunite.websocket.rxevent.object.messages.RxObjectEvent;
 import com.appunite.websocket.rxevent.object.messages.RxObjectEventConnected;
 import com.appunite.websocket.rxevent.object.messages.RxObjectEventMessage;
@@ -80,8 +82,7 @@ public class SocketTest {
         }
     }
 
-    private void register() throws IOException, InterruptedException,
-            ObjectParseException {
+    private void register() throws IOException, InterruptedException, ObjectParseException {
         connection.onNext(new RxObjectEventConnected(sender), 0);
         testScheduler.triggerActions();
         verify(sender).sendObjectMessage(new RegisterMessage("asdf"));
