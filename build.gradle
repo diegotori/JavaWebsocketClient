@@ -24,6 +24,8 @@ allprojects {
     tasks.withType(JavaCompile) {
         sourceCompatibility = rootProject.javaSourceCompatibility
         targetCompatibility = rootProject.javaSourceCompatibility
+        def env = System.getenv()
+        options.bootClasspath = env['JAVA_HOME']+'/jre/lib/rt.jar'
     }
 }
 
