@@ -16,13 +16,15 @@
 
 package com.appunite.websocket.rx;
 
-import com.appunite.websocket.rx.messages.RxEvent;
-import com.appunite.websocket.rx.messages.RxEventBinaryMessage;
-import com.appunite.websocket.rx.messages.RxEventConnected;
-import com.appunite.websocket.rx.messages.RxEventDisconnected;
-import com.appunite.websocket.rx.messages.RxEventStringMessage;
-import com.appunite.websocket.rx.object.messages.RxObjectEvent;
+import com.appunite.websocket.rxevent.messages.RxEvent;
+import com.appunite.websocket.rxevent.messages.RxEventBinaryMessage;
+import com.appunite.websocket.rxevent.messages.RxEventConnected;
+import com.appunite.websocket.rxevent.messages.RxEventDisconnected;
+import com.appunite.websocket.rxevent.messages.RxEventStringMessage;
+import com.appunite.websocket.rxevent.object.messages.RxObjectEvent;
 
+import com.appunite.websocket.rxevent.ServerHttpError;
+import com.appunite.websocket.rxevent.ServerRequestedCloseException;
 import javax.annotation.Nonnull;
 
 import okhttp3.OkHttpClient;
@@ -86,7 +88,8 @@ public class RxWebSockets {
                     @Override
                     public void onClosing(WebSocket webSocket, int code, String reason) {
                         super.onClosing(webSocket, code, reason);
-                        final ServerRequestedCloseException exception = new ServerRequestedCloseException(code, reason);
+                        final ServerRequestedCloseException
+                                exception = new ServerRequestedCloseException(code, reason);
                         subscriber.onNext(new RxEventDisconnected(exception));
                         subscriber.onError(exception);
                     }

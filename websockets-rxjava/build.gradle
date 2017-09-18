@@ -4,9 +4,8 @@ sourceCompatibility = rootProject.javaSourceCompatibility
 targetCompatibility = rootProject.javaTargetCompatibility
 
 dependencies {
-    compile rootProject.libraries.okhttp,
-        rootProject.libraries.rxjava,
-        rootProject.libraries.findbugs_jsr305
+    compile project(":websockets-rxevent")
+    compile rootProject.libraries.rxjava
 
     testCompile rootProject.basic_test_dependencies
 }

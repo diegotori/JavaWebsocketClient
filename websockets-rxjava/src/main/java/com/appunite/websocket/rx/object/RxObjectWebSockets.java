@@ -17,17 +17,20 @@
 package com.appunite.websocket.rx.object;
 
 import com.appunite.websocket.rx.RxWebSockets;
-import com.appunite.websocket.rx.messages.RxEventBinaryMessage;
-import com.appunite.websocket.rx.object.messages.RxObjectEvent;
-import com.appunite.websocket.rx.object.messages.RxObjectEventMessage;
-import com.appunite.websocket.rx.messages.RxEvent;
-import com.appunite.websocket.rx.messages.RxEventConnected;
-import com.appunite.websocket.rx.messages.RxEventDisconnected;
-import com.appunite.websocket.rx.messages.RxEventStringMessage;
-import com.appunite.websocket.rx.object.messages.RxObjectEventWrongBinaryMessageFormat;
-import com.appunite.websocket.rx.object.messages.RxObjectEventConnected;
-import com.appunite.websocket.rx.object.messages.RxObjectEventWrongStringMessageFormat;
-import com.appunite.websocket.rx.object.messages.RxObjectEventDisconnected;
+import com.appunite.websocket.rxevent.messages.RxEventBinaryMessage;
+import com.appunite.websocket.rxevent.object.ObjectParseException;
+import com.appunite.websocket.rxevent.object.ObjectSerializer;
+import com.appunite.websocket.rxevent.object.ObjectWebSocketSender;
+import com.appunite.websocket.rxevent.object.messages.RxObjectEvent;
+import com.appunite.websocket.rxevent.object.messages.RxObjectEventMessage;
+import com.appunite.websocket.rxevent.messages.RxEvent;
+import com.appunite.websocket.rxevent.messages.RxEventConnected;
+import com.appunite.websocket.rxevent.messages.RxEventDisconnected;
+import com.appunite.websocket.rxevent.messages.RxEventStringMessage;
+import com.appunite.websocket.rxevent.object.messages.RxObjectEventWrongBinaryMessageFormat;
+import com.appunite.websocket.rxevent.object.messages.RxObjectEventConnected;
+import com.appunite.websocket.rxevent.object.messages.RxObjectEventWrongStringMessageFormat;
+import com.appunite.websocket.rxevent.object.messages.RxObjectEventDisconnected;
 
 import okhttp3.WebSocket;
 

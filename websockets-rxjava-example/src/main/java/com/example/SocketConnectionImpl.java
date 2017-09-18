@@ -17,7 +17,7 @@
 package com.example;
 
 import com.appunite.websocket.rx.object.RxObjectWebSockets;
-import com.appunite.websocket.rx.object.messages.RxObjectEvent;
+import com.appunite.websocket.rxevent.object.messages.RxObjectEvent;
 
 import java.util.concurrent.TimeUnit;
 

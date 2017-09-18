@@ -16,8 +16,8 @@
 
 package com.example;
 
-import com.appunite.websocket.rx.RxWebSockets;
-import com.appunite.websocket.rx.messages.RxEvent;
+import com.appunite.websocket.rxevent.RxWebSockets;
+import com.appunite.websocket.rxevent.messages.RxEvent;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 

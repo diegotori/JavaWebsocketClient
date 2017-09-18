@@ -19,12 +19,12 @@ package com.appunite.socket;
 import android.util.Pair;
 
 import com.appunite.detector.SimpleDetector;
-import com.appunite.websocket.rx.object.messages.RxObjectEvent;
-import com.appunite.websocket.rx.object.messages.RxObjectEventConn;
-import com.appunite.websocket.rx.object.messages.RxObjectEventDisconnected;
-import com.appunite.websocket.rx.object.messages.RxObjectEventMessage;
-import com.appunite.websocket.rx.object.messages.RxObjectEventWrongMessageFormat;
-import com.appunite.websocket.rx.object.messages.RxObjectEventWrongStringMessageFormat;
+import com.appunite.websocket.rxevent.object.messages.RxObjectEvent;
+import com.appunite.websocket.rxevent.object.messages.RxObjectEventConn;
+import com.appunite.websocket.rxevent.object.messages.RxObjectEventDisconnected;
+import com.appunite.websocket.rxevent.object.messages.RxObjectEventMessage;
+import com.appunite.websocket.rxevent.object.messages.RxObjectEventWrongMessageFormat;
+import com.appunite.websocket.rxevent.object.messages.RxObjectEventWrongStringMessageFormat;
 import com.example.Socket;
 import com.example.model.DataMessage;
 import com.google.common.collect.ImmutableList;

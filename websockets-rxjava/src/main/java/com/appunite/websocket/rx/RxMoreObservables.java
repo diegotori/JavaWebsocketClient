@@ -16,11 +16,11 @@
 
 package com.appunite.websocket.rx;
 
-import com.appunite.websocket.rx.object.ObjectSerializer;
-import com.appunite.websocket.rx.object.ObjectWebSocketSender;
 import com.appunite.websocket.rx.object.RxObjectWebSockets;
 
-import com.appunite.websocket.rx.object.messages.RxObjectEventMessage;
+import com.appunite.websocket.rxevent.object.ObjectSerializer;
+import com.appunite.websocket.rxevent.object.ObjectWebSocketSender;
+import com.appunite.websocket.rxevent.object.messages.RxObjectEventMessage;
 import java.util.concurrent.Callable;
 import java.util.logging.Level;
 import java.util.logging.Logger;

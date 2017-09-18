@@ -16,6 +16,8 @@
 
 package com.appunite.websocket.rx.object;
 
+import com.appunite.websocket.rxevent.object.ObjectParseException;
+import com.appunite.websocket.rxevent.object.ObjectSerializer;
 import com.google.gson.Gson;
 import com.google.gson.JsonParseException;
 

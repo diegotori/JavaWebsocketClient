@@ -16,9 +16,9 @@
 
 package com.example;
 
-import com.appunite.websocket.rx.RxWebSockets;
-import com.appunite.websocket.rx.object.GsonObjectSerializer;
-import com.appunite.websocket.rx.object.RxObjectWebSockets;
+import com.appunite.websocket.rxevent.RxWebSockets;
+import com.appunite.websocket.rxevent.object.GsonObjectSerializer;
+import com.appunite.websocket.rxevent.object.RxObjectWebSockets;
 import com.example.model.DataMessage;
 import com.example.model.Message;
 import com.example.model.MessageType;
