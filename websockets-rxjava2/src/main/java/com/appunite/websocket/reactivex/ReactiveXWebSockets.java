@@ -1,4 +1,4 @@
-package com.appunite.websocket.rxjava2;
+package com.appunite.websocket.reactivex;
 
 import com.appunite.websocket.rxevent.ServerHttpError;
 import com.appunite.websocket.rxevent.ServerRequestedCloseException;
@@ -26,19 +26,19 @@ import okio.ByteString;
  * Created by Diego on 6/27/2017.
  */
 
-public class RxJava2WebSockets {
+public class ReactiveXWebSockets {
     @Nonnull
     private final OkHttpClient client;
     @Nonnull
     private final Request request;
 
     /**
-     * Create instance of {@link RxJava2WebSockets}
+     * Create instance of {@link ReactiveXWebSockets}
      *
      * @param client {@link OkHttpClient} instance
      * @param request request to connect to websocket
      */
-    public RxJava2WebSockets(@Nonnull OkHttpClient client, @Nonnull Request request) {
+    public ReactiveXWebSockets(@Nonnull OkHttpClient client, @Nonnull Request request) {
         this.client = client;
         this.request = request;
     }

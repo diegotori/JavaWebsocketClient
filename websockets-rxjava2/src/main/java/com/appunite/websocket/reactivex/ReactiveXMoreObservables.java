@@ -1,9 +1,9 @@
-package com.appunite.websocket.rxjava2;
+package com.appunite.websocket.reactivex;
 
 import com.appunite.websocket.rxevent.object.ObjectSerializer;
 import com.appunite.websocket.rxevent.object.ObjectWebSocketSender;
 import com.appunite.websocket.rxevent.object.messages.RxObjectEventMessage;
-import com.appunite.websocket.rxjava2.object.RxJava2ObjectWebSockets;
+import com.appunite.websocket.reactivex.object.ReactiveXObjectWebSockets;
 import io.reactivex.Observable;
 import io.reactivex.ObservableSource;
 import io.reactivex.ObservableTransformer;
@@ -21,10 +21,10 @@ import okhttp3.WebSocket;
  * Created by son_g on 9/17/2017.
  */
 
-public final class RxJava2MoreObservables {
-    public static final Logger logger = Logger.getLogger("RxJava2WebSockets");
+public final class ReactiveXMoreObservables {
+    public static final Logger logger = Logger.getLogger("ReactiveXWebSockets");
 
-    private RxJava2MoreObservables() {
+    private ReactiveXMoreObservables() {
         throw new UnsupportedOperationException();
     }
 
@@ -51,7 +51,7 @@ public final class RxJava2MoreObservables {
      * Send object
      * <p>
      * Object is parsed via {@link ObjectSerializer} given by
-     * {@link RxJava2ObjectWebSockets#RxJava2ObjectWebSockets(RxJava2WebSockets, ObjectSerializer)}
+     * {@link ReactiveXObjectWebSockets#ReactiveXObjectWebSockets(ReactiveXWebSockets, ObjectSerializer)}
      *
      * @param sender connection event that is used to send message
      * @param message message to serialize and sent

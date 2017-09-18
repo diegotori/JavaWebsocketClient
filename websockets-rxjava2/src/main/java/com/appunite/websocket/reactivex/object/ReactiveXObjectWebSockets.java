@@ -14,8 +14,9 @@
  * limitations under the License
  */
 
-package com.appunite.websocket.rxjava2.object;
+package com.appunite.websocket.reactivex.object;
 
+import com.appunite.websocket.reactivex.ReactiveXWebSockets;
 import com.appunite.websocket.rxevent.messages.RxEvent;
 import com.appunite.websocket.rxevent.messages.RxEventBinaryMessage;
 import com.appunite.websocket.rxevent.messages.RxEventConnected;
@@ -30,7 +31,6 @@ import com.appunite.websocket.rxevent.object.messages.RxObjectEventMessage;
 import com.appunite.websocket.rxevent.object.messages.RxObjectEventWrongBinaryMessageFormat;
 import com.appunite.websocket.rxevent.object.messages.RxObjectEventWrongStringMessageFormat;
 import com.appunite.websocket.rxevent.object.ObjectSerializer;
-import com.appunite.websocket.rxjava2.RxJava2WebSockets;
 import io.reactivex.Flowable;
 import io.reactivex.FlowableOperator;
 import io.reactivex.annotations.NonNull;
@@ -43,18 +43,18 @@ import org.reactivestreams.Subscriber;
 /**
  * This class allows to retrieve json messages from websocket
  */
-public class RxJava2ObjectWebSockets {
+public class ReactiveXObjectWebSockets {
     @Nonnull
-    private final RxJava2WebSockets rxWebSockets;
+    private final ReactiveXWebSockets rxWebSockets;
     @Nonnull
     private final ObjectSerializer objectSerializer;
 
     /**
-     * Creates {@link RxJava2ObjectWebSockets}
+     * Creates {@link ReactiveXObjectWebSockets}
      * @param rxWebSockets socket that is used to connect to server
      * @param objectSerializer that is used to parse messages
      */
-    public RxJava2ObjectWebSockets(@Nonnull RxJava2WebSockets rxWebSockets, @Nonnull ObjectSerializer
+    public ReactiveXObjectWebSockets(@Nonnull ReactiveXWebSockets rxWebSockets, @Nonnull ObjectSerializer
             objectSerializer) {
         this.rxWebSockets = rxWebSockets;
         this.objectSerializer = objectSerializer;
@@ -64,7 +64,7 @@ public class RxJava2ObjectWebSockets {
      * Returns observable that connected to a websocket and returns {@link RxObjectEvent}s
      *
      * @return Observable that connects to websocket
-     * @see RxJava2WebSockets#webSocketObservable()
+     * @see ReactiveXWebSockets#webSocketObservable()
      */
     @Nonnull
     public Flowable<RxObjectEvent> webSocketObservable() {
