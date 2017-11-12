@@ -1,9 +1,10 @@
 buildscript {
     repositories {
         jcenter()
+        google()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.3.3'
+        classpath 'com.android.tools.build:gradle:3.0.0'
     }
 }
 
@@ -20,6 +21,7 @@ allprojects {
         mavenCentral()
         jcenter()
         maven { url 'https://commondatastorage.googleapis.com/maven-repository/' }
+        google()
     }
     tasks.withType(JavaCompile) {
         sourceCompatibility = rootProject.javaSourceCompatibility

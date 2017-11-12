@@ -1,8 +1,8 @@
 apply plugin: 'com.android.application'
 
 dependencies {
-    compile project(":websockets-rxjava")
-    compile rootProject.libraries.rxandroid,
+    implementation project(":websockets-rxjava")
+    implementation rootProject.libraries.rxandroid,
         rootProject.libraries.rxbinding,
         rootProject.libraries.support_v4,
         rootProject.libraries.recyclerview_v7,
@@ -10,8 +10,8 @@ dependencies {
         rootProject.libraries.guava
     //compile "com.appunite:websockets:1.0"
 
-    testCompile rootProject.basic_test_dependencies
-    testCompile rootProject.libraries.guava
+    testImplementation rootProject.basic_test_dependencies
+    testImplementation rootProject.libraries.guava
 }
 
 android {
