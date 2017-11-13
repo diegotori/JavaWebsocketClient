@@ -37,7 +37,7 @@ ext {
           exclude group: 'com.google.code.findbugs'
       },
       rxandroid: "io.reactivex:rxandroid:$rxandroid_version",
-      rxandroid2: "io.reactivex:rxjava2:rxandroid:$rxandroid2_version",
+      rxandroid2: "io.reactivex.rxjava2:rxandroid:$rxandroid2_version",
       rxbinding: "com.jakewharton.rxbinding:rxbinding:$rxbinding_version",
       rxbinding2: "com.jakewharton.rxbinding2:rxbinding:$rxbinding2_version",
       recyclerview_v7: "com.android.support:recyclerview-v7:$android_support_version",
