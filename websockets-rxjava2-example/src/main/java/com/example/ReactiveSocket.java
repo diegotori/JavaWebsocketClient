@@ -53,26 +53,43 @@ public class ReactiveSocket {
                 .compose(ReactiveMoreObservables.behaviorRefCount());
         this.events = events;
 
-
         final Observable<RxObjectEventMessage> registeredMessage = events
                 .compose(ReactiveMoreObservables.filterAndMap(RxObjectEventMessage.class))
                 .filter(new FilterRegisterMessage());
 
-
-        final Observable<RxObjectEventDisconnected> disconnectedMessage = events
-                .compose(ReactiveMoreObservables.filterAndMap(RxObjectEventDisconnected.class));
+//        final Observable<RxObjectEventDisconnected> disconnectedMessage = events
+//                .compose(ReactiveMoreObservables.filterAndMap(RxObjectEventDisconnected.class));
 
         connectedAndRegistered = BehaviorSubject.create();
-        disconnectedMessage
-                .map(new Function<RxObjectEventDisconnected, RxObjectEventConn>() {
-                    @Override
-                    public RxObjectEventConn apply(RxObjectEventDisconnected rxEventDisconnected) {
-                        //TODO: This shouldn't return null!!!
-                        return null;
-                    }
-                })
+//        disconnectedMessage
+        events
+//                .map(new Function<RxObjectEventDisconnected, RxObjectEventConn>() {
+//                    @Override
+//                    public RxObjectEventConn apply(RxObjectEventDisconnected rxEventDisconnected) {
+//                        //TODO: This shouldn't return null!!!
+////                        return null;
+////                        return new RxObjectEvent() {
+////                            @Override
+////                            public String toString() {
+////                                return null;
+////                            }
+////                        };
+//                    }
+//                })
+//                .filter(new Predicate<RxObjectEvent>() {
+//                    @Override
+//                    public boolean test(RxObjectEvent rxObjectEvent) throws Exception {
+//                        return rxObjectEvent instanceof RxObjectEventConnected;
+//                    }
+//                })
+//                .compose(ReactiveMoreObservables.filterAndMap(RxObjectEventDisconnected.class));
+                .compose(ReactiveMoreObservables.filterAndMap(RxObjectEventConnected.class))
+//                .compose(ReactiveMoreObservables.filterAndMap(RxObjectEventConn.class))
+                .cast(RxObjectEventConn.class)
                 .mergeWith(registeredMessage)
+//                .compose(ReactiveMoreObservables.filterAndMap(RxObjectEventConnected.class))
                 .subscribe(connectedAndRegistered);
+//        registeredMessage.subscribe(connectedAndRegistered);
 
         // Register on connected
         final Observable<RxObjectEventConnected> connectedMessage = events
@@ -84,10 +101,9 @@ public class ReactiveSocket {
                 .flatMap(new Function<RxObjectEventConnected, Observable<?>>() {
                     @Override
                     public Observable<?> apply(RxObjectEventConnected rxEventConn) {
-                        return ReactiveXMoreObservables.sendObjectMessage(rxEventConn.sender(), new
-                                RegisterMessage
-                                ("asdf"))
-                                .toObservable();
+                        return ReactiveXMoreObservables.sendObjectMessage(rxEventConn.sender(),
+                                new RegisterMessage("asdf")
+                        ).toObservable();
                     }
                 })
                 .lift(ReactiveLoggingObservables.loggingOnlyErrorLift(LOGGER, "SendRegisterEvent"))
@@ -253,7 +269,6 @@ public class ReactiveSocket {
             }
         };
     }
-
 
     static class FilterRegisterMessage implements Predicate<RxObjectEventMessage> {
         @Override
