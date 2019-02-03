@@ -19,8 +19,6 @@ package com.example;
 import rx.Observable.Operator;
 import rx.Observer;
 import rx.Subscriber;
-import rx.exceptions.Exceptions;
-import rx.exceptions.OnErrorThrowable;
 
 public class OperatorDoOnNext<T> implements Operator<T, T> {
     private final Observer<? super T> doOnNextObserver;

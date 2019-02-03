@@ -1,3 +1,6 @@
-include ':websockets-rxjava2', ':websockets-rxevent'
-include ":websockets-rxjava"
-include ":websockets-rxjava-example"
+include ':websockets-rxevent'
+include ':websockets-rxjava1'
+include ':websockets-rxjava2'
+include ":websockets-example-common"
+include ':websockets-rxjava1-example'
+include ":websockets-rxjava2-example"

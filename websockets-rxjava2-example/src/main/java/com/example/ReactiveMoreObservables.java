@@ -1,21 +1,20 @@
 package com.example;
 
 import com.appunite.websocket.rxevent.object.messages.RxObjectEvent;
+
+import org.reactivestreams.Publisher;
+import org.reactivestreams.Subscriber;
+import org.reactivestreams.Subscription;
+
+import javax.annotation.Nonnull;
+
 import io.reactivex.Flowable;
 import io.reactivex.FlowableOperator;
 import io.reactivex.FlowableTransformer;
 import io.reactivex.Observable;
-import io.reactivex.ObservableOperator;
-import io.reactivex.ObservableSource;
 import io.reactivex.ObservableTransformer;
-import io.reactivex.Observer;
-import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Function;
 import io.reactivex.functions.Predicate;
-import javax.annotation.Nonnull;
-import org.reactivestreams.Publisher;
-import org.reactivestreams.Subscriber;
-import org.reactivestreams.Subscription;
 
 /**
  * Created by son_g on 11/12/2017.

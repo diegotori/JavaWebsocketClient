@@ -7,20 +7,7 @@ android {
     defaultConfig {
         minSdkVersion rootProject.minSdkVersion
         targetSdkVersion rootProject.targetSdkVersion
-        applicationId "com.appunite.socket"
-    }
-
-    flavorDimensions "config"
-    productFlavors {
-        rxjava {
-            dimension "config"
-        }
-
-        rxjava2 {
-            dimension "config"
-            applicationIdSuffix ".rxjava2"
-            versionNameSuffix "-rxjava2"
-        }
+        applicationId "com.appunite.socket.rxjava2"
     }
     buildTypes {
         release {
@@ -32,7 +19,6 @@ android {
         textOutput "stdout"
         textReport true
     }
-
     compileOptions {
         sourceCompatibility rootProject.javaSourceCompatibility
         targetCompatibility rootProject.javaTargetCompatibility
@@ -40,17 +26,10 @@ android {
 }
 
 dependencies {
-    rxjavaImplementation project(":websockets-rxjava"),
-        rootProject.libraries.rxandroid,
-        rootProject.libraries.rxbinding
-    rxjava2Implementation project(":websockets-rxjava2"),
+    implementation project(":websockets-rxjava2"),
+        project(":websockets-example-common"),
         rootProject.libraries.rxandroid2,
         rootProject.libraries.rxbinding2
-    implementation rootProject.libraries.support_v4,
-        rootProject.libraries.recyclerview_v7,
-        rootProject.libraries.gson,
-        rootProject.libraries.guava
-    //compile "com.appunite:websockets:1.0"
 
     testImplementation rootProject.basic_test_dependencies
     testImplementation rootProject.libraries.guava

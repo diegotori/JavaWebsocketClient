@@ -1,0 +1,36 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion rootProject.compileSdkVersion
+    buildToolsVersion rootProject.buildToolsVersion
+
+    defaultConfig {
+        minSdkVersion rootProject.minSdkVersion
+        targetSdkVersion rootProject.targetSdkVersion
+        applicationId "com.appunite.socket.rxjava1"
+    }
+    buildTypes {
+        release {
+            proguardFiles = [getDefaultProguardFile('proguard-android.txt'), 'src/main/proguard-project.txt']
+        }
+    }
+    lintOptions {
+        disable 'InvalidPackage'
+        textOutput "stdout"
+        textReport true
+    }
+    compileOptions {
+        sourceCompatibility rootProject.javaSourceCompatibility
+        targetCompatibility rootProject.javaTargetCompatibility
+    }
+}
+
+dependencies {
+    implementation project(":websockets-rxjava1"),
+        project(":websockets-example-common"),
+        rootProject.libraries.rxandroid,
+        rootProject.libraries.rxbinding
+
+    testImplementation rootProject.basic_test_dependencies
+    testImplementation rootProject.libraries.guava
+}
