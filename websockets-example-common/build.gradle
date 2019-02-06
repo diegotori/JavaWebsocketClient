@@ -1,0 +1,34 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion rootProject.compileSdkVersion
+    buildToolsVersion rootProject.buildToolsVersion
+
+    defaultConfig {
+        minSdkVersion rootProject.minSdkVersion
+        targetSdkVersion rootProject.targetSdkVersion
+    }
+    buildTypes {
+        release {
+            proguardFiles = [getDefaultProguardFile('proguard-android.txt'), 'src/main/proguard-project.txt']
+        }
+    }
+    lintOptions {
+        disable 'InvalidPackage'
+        textOutput "stdout"
+        textReport true
+    }
+
+    compileOptions {
+        sourceCompatibility rootProject.javaSourceCompatibility
+        targetCompatibility rootProject.javaTargetCompatibility
+    }
+}
+
+dependencies {
+    api project(":websockets-rxevent")
+    api rootProject.libraries.support_v4,
+        rootProject.libraries.recyclerview_v7,
+        rootProject.libraries.gson,
+        rootProject.libraries.guava
+}

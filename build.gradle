@@ -4,14 +4,14 @@ buildscript {
         google()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.0.0'
+        classpath 'com.android.tools.build:gradle:3.3.0'
     }
 }
 
 apply from: "gradle_scripts/dependencies.gradle"
 
 allprojects {
-    def isLibraryProject = project(":websockets-rxjava-example") != it
+    def isLibraryProject = project(":websockets-rxjava1-example") != it && project(":websockets-rxjava2-example") != it
     if(isLibraryProject) {
       group = "com.appunite"
       version = "4.0.1"
